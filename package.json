@@ -1,0 +1,26 @@
+{
+  "name": "pdf-diff-viewer",
+  "version": "1.0.0",
+  "description": "A web application that displays side-by-side differences between two PDF files",
+  "main": "server/index.js",
+  "files": [
+    "public",
+    "server",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "build": "node scripts/build.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "diff": "^5.2.0",
+    "express": "^4.18.2",
+    "multer": "^2.0.2",
+    "pdfjs-dist": "5.5.207"
+  }
+}
