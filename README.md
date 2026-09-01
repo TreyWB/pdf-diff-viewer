@@ -1,55 +1,19 @@
 # PDF Diff Viewer
 
-A lightweight web application for comparing the extractable text in two PDF files with a page-aware, side-by-side diff.
+> Made with [Codex](https://openai.com/codex/) – using GPT 5.6 Sol
 
-It follows the same Express + static JavaScript structure and visual language as the sibling DOCX and XLSX diff viewers. PDFs are processed in memory by the local Node process and are never written to disk.
+A lightweight, privacy-first web application that lets you drag-and-drop two PDF files and instantly see a color-coded side-by-side diff – no uploads, no servers, everything happens in your browser.
 
-## Quick start
+## Quick Start
+1. Clone or download this repo  
+2. Start server (e.g. `npm start` or `npm start -- --port=9001`)  
+3. Open http://localhost:3000  
+4. Drop two `.docx` files and watch the diff appear instantly  
 
+## Development
 ```bash
 npm install
-npm start
+npm run dev     # start Vite dev server
+npm run build   # create production bundle
+npm run preview # test the built version
 ```
-
-Then open [http://localhost:3000](http://localhost:3000), choose an original and modified PDF, and select **Compare PDFs**.
-
-Node.js 20.19 or newer is required.
-
-To use another port:
-
-```bash
-npm start -- --port=4173
-```
-
-## What it compares
-
-- Pages are sequence-aligned so inserted or removed pages do not shift the rest of the comparison.
-- Extracted text lines are aligned within each page.
-- Changed lines receive word-level added/removed highlighting.
-- The two document panels scroll together.
-
-## Limits
-
-- Maximum file size: 25MB per PDF.
-- Maximum document length: 250 pages.
-- Password-protected PDFs are not supported.
-- Scanned or image-only PDFs need OCR first; this app deliberately does not guess at visual differences when no text layer exists.
-- PDF text extraction follows the reading order encoded in the file. Complex multi-column layouts may not match their visual reading order perfectly.
-
-## Tests
-
-```bash
-npm test
-```
-
-The test suite covers PDF extraction, page/line alignment, word-level changes, and the upload API.
-
-## Release build
-
-Create a runtime-only npm package in `release/`:
-
-```bash
-npm run build
-```
-
-The generated `pdf-diff-viewer-1.0.0.tgz` contains the server, browser assets, package metadata, and README. Tests and development-only files are excluded.
